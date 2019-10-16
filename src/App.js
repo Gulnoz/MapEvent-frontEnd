@@ -9,6 +9,7 @@ class App extends React.Component{
   state={
     categories: [],
     events: [],
+    filteredEvent: [],
     currentUser: null,
     favorits: []
   }
@@ -38,7 +39,7 @@ class App extends React.Component{
   
     fetch('http://localhost:3000/events')
     .then(res => res.json())
-      .then(res=>this.setState({events: res}))
+      .then(res => this.setState({ events: res, filteredEvent:res}))
   }
 
  selectByCategory=(id)=>{
@@ -46,7 +47,7 @@ class App extends React.Component{
    fetch(`http://localhost:3000/events/categories/${id}`
    )
      .then(res => res.json())
-     .then(res => this.setState({ events: res }))
+     .then(res => this.setState({ filteredEvent: res }))
  }
  setCurrentUser=(user)=>{
    this.setState({
@@ -84,7 +85,7 @@ class App extends React.Component{
         
            <div className='map-div'>
               <div><SelectCategory categories={this.state.categories} submitHendler={this.selectByCategory} /></div> 
-          <MapContainer currentUser={this.state.currentUser} addFavoritEvent={this.addFavoritEvent} events={this.state.events}/>
+          <MapContainer currentUser={this.state.currentUser} addFavoritEvent={this.addFavoritEvent} events={this.state.filteredEvent}/>
          
           </div>
         
