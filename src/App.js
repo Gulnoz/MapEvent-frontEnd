@@ -45,8 +45,8 @@ this.setState({
   }
 
 selectByCategory=(id)=>{
-   //console.log('selectByCategoryFunc')
-  if (id === null){
+   console.log(id)
+  if (id === null || id === 'All'){
     this.setState({ filteredEvent: this.state.events })
   }
   else{
