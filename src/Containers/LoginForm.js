@@ -20,8 +20,7 @@ handleChange = event => {
 
 handleSubmit = event => {
     event.preventDefault();
-   
-        fetch('http://localhost:3000/users', 
+    fetch('http://localhost:3000/users', 
         { 
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -30,40 +29,28 @@ handleSubmit = event => {
                 password: this.state.password
             }) 
         }) 
-  
-
         .then(res => res.json())
-            .then(res=>this.props.setCurrentUser(res.data))
+        .then(res=>this.props.setCurrentUser(res.data))
 }
 
 
-   render()
-   {
-   return(
-       
-       <Form onSubmit={this.handleSubmit} >  
-      
-           <GoogleForm setCurrentUser={this.props.setCurrentUser}/>
-    <Form.Group controlId="formBasicEmail">
-        <Form.Label></Form.Label>
-               <Form.Control type="email" 
-               name="email"
-                value={this.state.email} 
-                placeholder="Enter email"
-                 onChange={this.handleChange} />
-    </Form.Group>
-
-    <Form.Group controlId="formBasicPassword">
-        <Form.Label></Form.Label>
-               <Form.Control type="password"
-                name="password"
-                 value={this.state.password} placeholder="Password" onChange={this.handleChange} />
-    </Form.Group>
-    
-    <Button variant="primary" type="submit">
-        Submit
-  </Button>
-</Form>
-   )
-}
+    render(){
+    return(
+    <Form onSubmit={this.handleSubmit} >  
+        <GoogleForm setCurrentUser={this.props.setCurrentUser}/>
+            <div style={{ padding: "10px", fontSize: "calc(10px + 2vmin)", fontWeight: "bold"}}>SignIn/SignUp form:</div>
+        <Form.Group controlId="formBasicEmail">
+            <Form.Label></Form.Label>
+            <Form.Control type="email" name="email" value={this.state.email} placeholder="Enter email" onChange={this.handleChange} />
+        </Form.Group>
+        <Form.Group controlId="formBasicPassword">
+            <Form.Label></Form.Label>
+            <Form.Control type="password" name="password" value={this.state.password} placeholder="Password" onChange={this.handleChange} />
+        </Form.Group>
+        <Button variant="primary" type="submit">
+            Submit
+        </Button>
+    </Form>
+    )
+    }
 }

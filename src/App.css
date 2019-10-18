@@ -41,6 +41,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: top;
+    
 }
 
 #user-container form {
@@ -51,27 +52,36 @@
     text-align: center;
     overflow: hidden;
     border-radius: 5px;
+       align-content: space-between;
 }
 
 #user-container button:hover{
     background: #466b75;
     background: rgba(70, 107, 117,.9);
+    width: 139px;
+    height: 39px;
+    padding: 3px;
+ 
 }
 
 #user-container button{
     background: #466b75;
     text-align: center;
-    width: 130px;
-    height: 30px;
+    width: 140px;
+    height: 40px;
     overflow: hidden;
     border-radius: 5px;
+    font-size: calc(5px + 2vmin);
+    margin: 5px;
     
 }
 #user-container input{
-    width: 125px;
+    width: 170px;
     height: 30px;
     overflow: hidden;
     border-radius: 5px;
+    padding-left: 6px;
+     margin: 2px;
 }
 @media all and (min-width: 480px) {
   .Login {

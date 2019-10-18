@@ -13,8 +13,8 @@ handleChange=(event)=> {
 
 handleSubmit=(event)=> {
     event.preventDefault();
-    if (this.state.value && this.state.value!=='All'  ) { this.props.submitHendler(this.state.value)}
-    
+   this.props.submitHendler(this.state.value)
+   
    
 }
 

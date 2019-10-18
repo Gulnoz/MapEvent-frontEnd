@@ -8,7 +8,7 @@ export default class FavoritEventList extends React.Component {
         console.log("FavoritList")
         console.log(this.props.favorits)
         // console.log(this.props.favorits[0].name)
-         return this.props.favorits.map(favorit => <FavoritEvent key={favorit.id} favorit={favorit} />)
+        return this.props.favorits.map(favorit => <FavoritEvent key={favorit.id} favorit={favorit} popUpFavoriteHendler={this.props.popUpFavoriteHendler}/>)
     }
 
     render() {

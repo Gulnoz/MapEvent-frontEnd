@@ -6,9 +6,9 @@ export default class FavoritEvent extends React.Component {
 
 
     render() {
-        console.log(this.props.favorit.name)
+        //console.log(this.props.favorit)
         return (
-            <li><strong>
+            <li onClick={() => { this.props.popUpFavoriteHendler(this.props.favorit)}}><strong>
                 {this.props.favorit.name.text}
             </strong>
             </li>

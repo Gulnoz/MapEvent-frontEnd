@@ -13,7 +13,7 @@ export default class UserContainer extends React.Component {
              this.props.currentUser
               ? 
               // console.log(this.props.currentUser.attributes)
-              <FavoritEventList favorits={this.props.favorits} userEvents={this.props.currentUser.attributes.user_events}/>
+              <FavoritEventList popUpFavoriteHendler={this.props.popUpFavoriteHendler}favorits={this.props.favorits} userEvents={this.props.currentUser.attributes.user_events}/>
             :<LoginForm setCurrentUser={this.props.setCurrentUser}/>
           }
           </>
