@@ -19,7 +19,7 @@ filterFavoritEvents=()=>{
    // console.log(events)
   let newArr=[]
   if (this.state.currentUser){
-    this.state.currentUser.attributes.user_events.forEach((user_event)=> {
+    this.state.currentUser.data.attributes.user_events.forEach((user_event)=> {
     this.state.events.forEach((event) => user_event.event_id === event.id ? newArr.push(event) : console.log(event));}) 
     return newArr
   }
@@ -57,6 +57,7 @@ selectByCategory=(id)=>{
 }
 
 setCurrentUser=(user)=>{
+ console.log(user)
   this.setState({
     currentUser: user
   })
@@ -114,7 +115,7 @@ addFavoritEvent = (e, eventObj) =>{
           <MapContainer currentUser={this.state.currentUser} addFavoritEvent={this.addFavoritEvent} events={this.state.filteredEvent}/>
         </div>
         <div id='user-container'>
-          <UserContainer popUpFavoriteHendler={this.popUpFavoriteHendler}favorits={this.state.favorits}currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser}/>
+          <UserContainer popUpFavoriteHendler={this.popUpFavoriteHendler} favorits={this.state.favorits} currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser} categories={this.state.categories}/>
         </div>
       </div>
     );

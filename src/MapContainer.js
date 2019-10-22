@@ -83,7 +83,7 @@ class MapContainer extends React.Component{
         return this.props.events.map((oneEvent, index ) => {
             console.log(oneEvent)
             return <Marker 
-                key={index}
+                key={oneEvent.id}
                 id={oneEvent.id}
                 eventObj={oneEvent}
                 position={{
@@ -98,7 +98,7 @@ class MapContainer extends React.Component{
                 start={oneEvent.start.local.slice(11,16)}
                 end={oneEvent.end.local.slice(11, 16)}
                 url={oneEvent.url}
-                icon={this.markerIconHendler(oneEvent.category_id)}
+                // icon={this.markerIconHendler(oneEvent.category_id)}
             />
             })
     }

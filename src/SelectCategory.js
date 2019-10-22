@@ -26,7 +26,7 @@ render() {
           <select value={this.state.value} onChange={this.handleChange}>
                     <option value={null}>All</option>
                     {this.props.categories.map(category=>{
-                        return <option value={category.id}> {category.short_name} </option>
+                        return <option value={category.id}> {category.name} </option>
                     })}
                     {/* <option value="103">Music</option>
                     <option value="108">Sports & Fitness</option>
