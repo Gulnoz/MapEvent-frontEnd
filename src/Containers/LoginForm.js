@@ -38,7 +38,7 @@ handleSubmit = event => {
     return(
     <Form onSubmit={this.handleSubmit} >  
         <GoogleForm setCurrentUser={this.props.setCurrentUser}/>
-            <div style={{ padding: "10px", fontSize: "calc(10px + 2vmin)", fontWeight: "bold"}}>SignIn/SignUp form:</div>
+            <div style={{ color: 'white', padding: "10px", fontSize: "calc(10px + 2vmin)", fontWeight: "bold"}}>SignIn/SignUp form:</div>
         <Form.Group controlId="formBasicEmail">
             <Form.Label></Form.Label>
             <Form.Control type="email" name="email" value={this.state.email} placeholder="Enter email" onChange={this.handleChange} />

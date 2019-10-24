@@ -9,6 +9,7 @@ class SelectCategory extends React.Component {
 
 handleChange=(event)=> {
     this.setState({ value: event.target.value });
+    this.props.submitHendler(event.target.value)
 }
 
 handleSubmit=(event)=> {
@@ -22,8 +23,8 @@ render() {
     return (
         <form onSubmit={this.handleSubmit}>
             <label>
-                Select event by category:
-          <select value={this.state.value} onChange={this.handleChange}>
+                <h3 style={{color: "white"}}>Select event by category:
+          <select style={{marginLeft: '3px'}} value={this.state.value} onChange={this.handleChange}>
                     <option value={null}>All</option>
                     {this.props.categories.map(category=>{
                         return <option value={category.id}> {category.name} </option>
@@ -34,9 +35,9 @@ render() {
                     <option value="115">Family & Education</option>
                     <option value="120">School Activities</option>
                     <option value="199">Other</option> */}
-                </select>
+                </select> </h3>
             </label>
-            <input type="submit" value="Go!" />
+           
         </form>
     );
 }

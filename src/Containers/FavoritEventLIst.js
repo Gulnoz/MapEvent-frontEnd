@@ -1,6 +1,6 @@
 import React from 'react';
 import FavoritEvent from './FavoritEvent'
-
+import { Button } from "semantic-ui-react"
 
 export default class FavoritEventList extends React.Component {
 
@@ -13,12 +13,17 @@ export default class FavoritEventList extends React.Component {
 
     render() {
         return (
+            <>
             <div>
-            <h2>Favorit events:</h2>
+               
+            <h2 style={{color:"white"}}>{this.props.caption}</h2>
                 <ol class="favorit-content-div">{this.eventHendler()}</ol> 
-            
-            </div>
+                    <Button type='submit' onClick={this.props.createEventHendler}>Create Event:</Button>
 
+            </div>
+            
+           
+        </>
         )
     }
 

@@ -39,27 +39,31 @@ class MapContainer extends React.Component{
 
     markerIconHendler=(category_id)=> {
         switch (category_id) {
-            case "103":   //music
+            case 1:   //music
                 return Music 
-            case "110":   //food
+            case 11:   //food
                 return foodIcon 
-           case "101":    //bisseness
-                return bussiness 
-            case "113":   //community
+           case 9:    //bisseness
+                return science 
+            case 5:   //community
                 return community 
-            case "105":  //art
+            case 6:   //community
+                return community 
+            case 2:  //art
                 return art 
             //     break;
-            case "104":   //film
+            case 10:   //film
                 { return film }
             //     break;
-            case "108":   //sport
+            case 3:   //sport
                 { return sport }
             //     break;
-            case "107":  //Health
-                { return sport }
+            case 6:   //Science
+                return science 
+            case 8:   //Science
+                return science 
             //     break;
-            case "102":   //Science
+            case 4:   //Science
                 return science 
             //     break;
             default:
@@ -73,39 +77,61 @@ class MapContainer extends React.Component{
     //     :null)
     //  }
     onInfoWindowOpen(props, e) {
-        const button = (<button style={{ background: "rgba(255, 255, 255, .1)", fontSize: "calc(5px + 2vmin)", border: "none"}}onClick={e => { this.props.addFavoritEvent(e, this.state.selectedPlace.eventObj) }}><span>❤️</span></button>);
-        ReactDOM.render(React.Children.only(button), document.getElementById("iwc"));
+        const btn=this.props.isUserEvent(this.state.selectedPlace)
+        ?
+         (<button style={{ background: "rgba(255, 255, 255, .1)", fontSize: "calc(5px + 2vmin)", border: "none" }} onClick={e => { this.props.editEvent(this.state.selectedPlace.eventObj) }}><span>📝</span></button>)
+        : (<button style={{ background: "rgba(255, 255, 255, .1)", fontSize: "calc(5px + 2vmin)", border: "none"}}onClick={e => { this.props.addFavoritEvent(e, this.state.selectedPlace.eventObj) }}><span>❤️</span></button>)
+       
+        ReactDOM.render(React.Children.only(btn), document.getElementById("iwc"));
     }
 
     displayMarkers = () => {
         //console.log(this.props.events)
         
         return this.props.events.map((oneEvent, index ) => {
-            console.log(oneEvent)
+            console.log(this.state.selectedPlace)
             return <Marker 
                 key={oneEvent.id}
                 id={oneEvent.id}
                 eventObj={oneEvent}
                 position={{
-                lat: oneEvent.venue.address.latitude,
-                lng: oneEvent.venue.address.longitude
+                    lat: oneEvent.location_lat,
+                    lng: oneEvent.location_long,
                 }}
+                // position={{
+                // lat: oneEvent.venue.address.latitude,
+                // lng: oneEvent.venue.address.longitude
+                // }}
                 onClick={this.infoWindowHendler}
-                name={oneEvent.name.text}
-                description={oneEvent.description.text}
-                location={oneEvent.venue.address.localized_multi_line_address_display}
-                date={oneEvent.start.local.slice(0,10)}
-                start={oneEvent.start.local.slice(11,16)}
-                end={oneEvent.end.local.slice(11, 16)}
-                url={oneEvent.url}
-                // icon={this.markerIconHendler(oneEvent.category_id)}
+                name={oneEvent.name}
+                description={oneEvent.description}
+                location={oneEvent.address}
+                date={oneEvent.date}
+                start={oneEvent.start_time}
+                end={oneEvent.end_time}
+                // url={oneEvent.url}
+                icon={this.markerIconHendler(oneEvent.category_id)}
+                img={oneEvent.image}
             />
             })
     }
+    // UNSAFE_componentWillReceiveProps(nextProps) {
+    //     console.log(this.props.eventToEdit)
+    //     if (!nextProps.eventToEdit) {
+
+    //         this.setState({
+    //             showingInfoWindow: false,  //Hides or the shows the infoWindow
+    //             activeMarker: {},          //Shows the active marker upon click
+    //             selectedPlace: {} 
+    //         })
+
+
+    //     }
+    // }
 
     render() {
-        // console.log(this.state.selectedPlace)
-        
+        console.log(this.state.selectedPlace)
+        const Background = 'https://images-na.ssl-images-amazon.com/images/I/91xRMoJBzoL._SY355_.jpg'
         return (
             <div style={{
                 position: "relative",
@@ -130,14 +156,25 @@ class MapContainer extends React.Component{
                                 width: '100px'
                             }}
                     }
-                    onOpen={e => this.props.currentUser ? this.onInfoWindowOpen(this.props, e) : null}
-                >
-                        <div style={{ padding:"20px", backgroundImage: "url(https://www.designbolts.com/wp-content/uploads/2013/02/Free-Tileable-Wood-Textures-Patterns-For-3D-Mapping.jpg)"}}>
-                        <h3>{this.state.selectedPlace.name} <span id="iwc"/></h3>
-                        <div><strong>Date:</strong> {this.state.selectedPlace.date} <strong>Time:</strong> {this.state.selectedPlace.start} -  {this.state.selectedPlace.end}</div>
-                        <div><strong>Adress:</strong> {this.state.selectedPlace.location}</div>
-                        <div><strong>Description: </strong>{this.state.selectedPlace.description}</div>
-                        <a href={this.state.selectedPlace.url}>URL: {this.state.selectedPlace.url}</a>
+                        onOpen={e => this.props.currentUser   ? this.onInfoWindowOpen(this.props, e) : null}
+                     >      
+                    
+                      {/* backgroundImage: `url(${this.state.selectedPlace.img})` */}
+                        <div id="pic" style={{
+                            backgroundImage: `url(${this.state.selectedPlace.img})`, backgroundSize: 'cover', overflow: 'hidden', borderRadius: '5px' }} >
+                    
+                            <div style={{ color: 'white', padding: "20px", backgroundColor: 'rgba(70, 107, 117,.7)'}}>
+                            <h3>{this.state.selectedPlace.name} <span id="iwc" />  
+                            {/* <img
+                                style={{ width: '40px', height: '30px' }}
+                                src={Background}
+                            /> */}
+                                  </h3>
+                                <div><strong>Date: {this.state.selectedPlace.date} Time: {this.state.selectedPlace.start} -  {this.state.selectedPlace.end}</strong></div> 
+                        <div><strong>Adress: {this.state.selectedPlace.location}</strong></div>
+                        <div><strong>Description: {this.state.selectedPlace.description}</strong></div>
+                        {/* <a href={this.state.selectedPlace.url}>URL: {this.state.selectedPlace.url}</a> */}
+                    </div>
                     </div>
                 </InfoWindow>
             </Map>
