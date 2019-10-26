@@ -87,7 +87,7 @@ export default class CreateEventForm extends React.Component {
                 </Form>
                 
                     
-                        <Button type='submit' onClick={this.props.createEventHendler}>Go Back:</Button>
+                        {/* <Button type='submit' onClick={this.props.createEventHendler}>My Events</Button> */}
                        
                 
             </Segment>

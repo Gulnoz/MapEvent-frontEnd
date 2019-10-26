@@ -152,6 +152,13 @@ this.setState({
    }
    
   }
+  setUserEvents=()=>{
+    if (this.state.currentUser) {
+      this.setState({
+        userEvents: this.state.currentUser.attributes.events
+      })
+    }
+  }
   componentDidMount(){
     fetch('http://localhost:3000/categories')
     .then(res=>res.json())
@@ -165,17 +172,21 @@ addEventHendler=(eventObj)=>{
   this.setState({
     events: [...this.state.events, eventObj],
     filteredEvent: [...this.state.filteredEvent, eventObj],
-    favorits: [...this.state.favorits, eventObj],
-    userEvents: [...this.state.favorits, eventObj]
+    //favorits: [...this.state.favorits, eventObj],
+    userEvents: [...this.state.userEvents, eventObj]
   })
 }
   updateEventHendler=(updatedEvent)=>{
     
-    let newArr=this.state.events.filter(event => event.id !== updatedEvent.id)
+    let newEventsArr=this.state.events.filter(event => event.id !== updatedEvent.id)
+    let newUserEventsArr = this.state.userEvents.filter((userEvent) => {
+      return userEvent.id!==updatedEvent.id
+    }) 
     this.setState({
-      event: [...newArr, updatedEvent],
-      filteredEvent: [...newArr, updatedEvent],
-      eventToEdit: null
+      event: [...newEventsArr, updatedEvent],
+      filteredEvent: [...newEventsArr, updatedEvent],
+      eventToEdit: null,
+      userEvents: [...newUserEventsArr, updatedEvent]
     })
   }
 editEvent=(event)=>{
@@ -293,7 +304,7 @@ addFavoritEvent = (e, eventObj) =>{
           
         </div>
         <div id='user-container'>
-          <UserContainer onChangeSelectHendler={this.onChangeSelectHendler}handleSubmit={this.handleSubmit} handleChange={this.handleChange}editEventNull={this.editEventNull} updateEventHendler={this.updateEventHendler} ref={this.createEventFormElement} createEventFormState={this.state.createEventFormState} addEventHendler={this.addEventHendler} popUpFavoriteHendler={this.popUpFavoriteHendler} favorits={this.state.favorits} userEvents={this.state.userEvents} currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser} categories={this.state.categories}/>
+          <UserContainer onChangeSelectHendler={this.onChangeSelectHendler} handleSubmit={this.handleSubmit} handleChange={this.handleChange} editEventNull={this.editEventNull} updateEventHendler={this.updateEventHendler} ref={this.createEventFormElement} createEventFormState={this.state.createEventFormState} addEventHendler={this.addEventHendler} popUpFavoriteHendler={this.popUpFavoriteHendler} favorits={this.state.favorits} userEvents={this.state.userEvents} currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser} categories={this.state.categories} setUserEvents={this.setUserEvents}/>
         </div>
         {/* <div id='create-event-form'>
           <CreateEventForm currentUser={this.state.currentUser} categories={this.state.categories}/>       

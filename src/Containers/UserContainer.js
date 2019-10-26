@@ -7,7 +7,9 @@ export default class UserContainer extends React.Component {
 
   state={
     showCreateForm: false,
-    showFaforite: false
+    showFaforite: false,
+    btnMyEventTxt: 'My Events',
+    btnMyFavoritTxt: 'Favorite'
   }
   createEventHendler=()=>{
    this.setState({
@@ -21,6 +23,8 @@ export default class UserContainer extends React.Component {
     this.setState({
       showFaforite: !this.state.showFaforite
     })
+
+    // this.createEventHendler()
   }
     render() {
       const { ref} = this.props;
@@ -31,7 +35,8 @@ export default class UserContainer extends React.Component {
           {
             this.props.currentUser
                    ?
-                  <button type='submit' onClick={this.swichWindow}>My Events</button>
+                <div> <button type='submit' onClick={this.swichWindow}>{this.state.showFaforite ? 'My Events' : 'Favorite' }</button><button type='submit' onClick={this.createEventHendler}>Create Event</button> </div>
+                  
                   : null}
             {
              this.props.currentUser

@@ -18,7 +18,7 @@ export default class FavoritEventList extends React.Component {
                
             <h2 style={{color:"white"}}>{this.props.caption}</h2>
                 <ol class="favorit-content-div">{this.eventHendler()}</ol> 
-                    <Button type='submit' onClick={this.props.createEventHendler}>Create Event:</Button>
+                    {/* <Button type='submit' onClick={this.props.createEventHendler}>Create Event</Button> */}
 
             </div>
             

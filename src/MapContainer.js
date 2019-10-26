@@ -70,12 +70,7 @@ class MapContainer extends React.Component{
                 return pumkin
         }
     }  
-    // onInfoWindowOpen=(props, e)=>{
-    //     return (props.currentUser
-    //      ?
-    //     <button onClick={ (e) => this.props.addFavoritEvent(e, this.state.selectedPlace.id)}>"Add!❤️"</button>
-    //     :null)
-    //  }
+
     onInfoWindowOpen(props, e) {
         const btn=this.props.isUserEvent(this.state.selectedPlace)
         ?
@@ -86,8 +81,6 @@ class MapContainer extends React.Component{
     }
 
     displayMarkers = () => {
-        //console.log(this.props.events)
-        
         return this.props.events.map((oneEvent, index ) => {
             console.log(this.state.selectedPlace)
             return <Marker 
@@ -98,10 +91,6 @@ class MapContainer extends React.Component{
                     lat: oneEvent.location_lat,
                     lng: oneEvent.location_long,
                 }}
-                // position={{
-                // lat: oneEvent.venue.address.latitude,
-                // lng: oneEvent.venue.address.longitude
-                // }}
                 onClick={this.infoWindowHendler}
                 name={oneEvent.name}
                 description={oneEvent.description}
@@ -115,23 +104,8 @@ class MapContainer extends React.Component{
             />
             })
     }
-    // UNSAFE_componentWillReceiveProps(nextProps) {
-    //     console.log(this.props.eventToEdit)
-    //     if (!nextProps.eventToEdit) {
-
-    //         this.setState({
-    //             showingInfoWindow: false,  //Hides or the shows the infoWindow
-    //             activeMarker: {},          //Shows the active marker upon click
-    //             selectedPlace: {} 
-    //         })
-
-
-    //     }
-    // }
 
     render() {
-        console.log(this.state.selectedPlace)
-        const Background = 'https://images-na.ssl-images-amazon.com/images/I/91xRMoJBzoL._SY355_.jpg'
         return (
             <div style={{
                 position: "relative",
@@ -152,30 +126,30 @@ class MapContainer extends React.Component{
                     marker={this.state.activeMarker}
                     visible={this.state.showingInfoWindow}
                     onClose={this.onClose}
-                    option={{boxStyle: {
-                                width: '100px'
-                            }}
-                    }
-                        onOpen={e => this.props.currentUser   ? this.onInfoWindowOpen(this.props, e) : null}
-                     >      
-                    
-                      {/* backgroundImage: `url(${this.state.selectedPlace.img})` */}
-                        <div id="pic" style={{
-                            backgroundImage: `url(${this.state.selectedPlace.img})`, backgroundSize: 'cover', overflow: 'hidden', borderRadius: '5px' }} >
-                    
-                            <div style={{ color: 'white', padding: "20px", backgroundColor: 'rgba(70, 107, 117,.7)'}}>
-                            <h3>{this.state.selectedPlace.name} <span id="iwc" />  
-                            {/* <img
-                                style={{ width: '40px', height: '30px' }}
-                                src={Background}
-                            /> */}
-                                  </h3>
-                                <div><strong>Date: {this.state.selectedPlace.date} Time: {this.state.selectedPlace.start} -  {this.state.selectedPlace.end}</strong></div> 
+                    option={{boxStyle: {width: '100px' }} }
+                    onOpen={e => this.props.currentUser   ? this.onInfoWindowOpen(this.props, e) : null}
+                >      
+                <div 
+                    id="pic"
+                    style={{
+                        backgroundImage: `url(${this.state.selectedPlace.img})`,
+                        backgroundSize: 'cover', 
+                        overflow: 'hidden',
+                        borderRadius: '5px' }} 
+                >
+                    <div
+                        style={{
+                            color: 'white',
+                            padding: "20px",
+                            backgroundColor: 'rgba(70, 107, 117,.7)'}}
+                    >
+                        <h3>{this.state.selectedPlace.name} <span id="iwc" /></h3>
+                        <div><strong>Date: {this.state.selectedPlace.date} Time: {this.state.selectedPlace.start} -  {this.state.selectedPlace.end}</strong></div> 
                         <div><strong>Adress: {this.state.selectedPlace.location}</strong></div>
                         <div><strong>Description: {this.state.selectedPlace.description}</strong></div>
                         {/* <a href={this.state.selectedPlace.url}>URL: {this.state.selectedPlace.url}</a> */}
                     </div>
-                    </div>
+                </div>
                 </InfoWindow>
             </Map>
             </div>
