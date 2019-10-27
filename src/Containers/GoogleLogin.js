@@ -4,7 +4,7 @@ import GoogleLogin from 'react-google-login';
 export default class Login extends React.Component {
 
     responseGoogle = (response) => {
-        fetch('http://localhost:3000/login', {
+        fetch('https://mapevent-api.herokuapp.com/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -19,7 +19,7 @@ export default class Login extends React.Component {
                 //   return user ? this.props.logedIn() : null
                 if (user.error) {
                     // console.log(user)
-                    fetch('http://localhost:3000/users',
+                    fetch('https://mapevent-api.herokuapp.com/users',
                         {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },

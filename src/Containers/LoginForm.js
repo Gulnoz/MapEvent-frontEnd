@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { Form, Button} from "react-bootstrap";
 import GoogleForm from './GoogleLogin'
 
 export default class Login extends Component {
@@ -20,7 +20,7 @@ handleChange = event => {
 
 handleSubmit = event => {
     event.preventDefault();
-    fetch('http://localhost:3000/users', 
+    fetch('https://mapevent-api.herokuapp.com/users', 
         { 
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
