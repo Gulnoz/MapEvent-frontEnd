@@ -8,6 +8,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 background-image: url("./pic/orig_131178nyc.jpg");
 background-size: cover;
+background-repeat: no-repeat;
 }
 
 code {
@@ -16,4 +17,5 @@ code {
 }
 form{
   margin: 20px;
+
 }
