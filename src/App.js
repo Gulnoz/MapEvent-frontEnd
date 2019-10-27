@@ -1,10 +1,8 @@
 import React from 'react';
 import './App.css';
 import MapContainer from './MapContainer';
-import { Select } from 'semantic-react';
 import UserContainer from './Containers/UserContainer'
 import SelectCategory from './SelectCategory'
-import CreateEventForm from './Containers/CreateEventForm'
 class App extends React.Component{
   state={
     categories: [],
@@ -76,7 +74,7 @@ class App extends React.Component{
         let currentEvent=this.state.createEventFormState
         console.log(currentEvent)
         if (currentEvent.eventId) {
-          fetch(`http://localhost:3000/events/${currentEvent.eventId}`, {
+          fetch(`https://mapevent-api.herokuapp.com/events/${currentEvent.eventId}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -99,7 +97,7 @@ class App extends React.Component{
             })
         }
         else {
-          fetch('http://localhost:3000/events', {
+          fetch('https://mapevent-api.herokuapp.com/events', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -160,11 +158,11 @@ this.setState({
     }
   }
   componentDidMount(){
-    fetch('http://localhost:3000/categories')
+    fetch('https://mapevent-api.herokuapp.com/categories')
     .then(res=>res.json())
     .then(res=>this.setState({categories: res}))
   
-    fetch('http://localhost:3000/events')
+    fetch('https://mapevent-api.herokuapp.com/events')
     .then(res => res.json())
     .then(res => this.setState({ events: res, filteredEvent:res}))
   }
@@ -234,7 +232,7 @@ selectByCategory=(id)=>{
     this.setState({ filteredEvent: this.state.events })
   }
   else{
-  fetch(`http://localhost:3000/events/categories/${id}`)
+    fetch(`https://mapevent-api.herokuapp.com/events/categories/${id}`)
   .then(res => res.json())
   .then(res => this.setState({ filteredEvent: res }))
   }
@@ -262,7 +260,7 @@ addFavoritEvent = (e, eventObj) =>{
       filteredEvent: this.state.events
     })
 
-    fetch(`http://localhost:3000/favorite_events/${exist.id}`,
+    fetch(`https://mapevent-api.herokuapp.com/favorite_events/${exist.id}`,
       {
         method: 'DELETE'
       }
@@ -277,7 +275,7 @@ addFavoritEvent = (e, eventObj) =>{
     })
     
  
-    fetch('http://localhost:3000/favorite_events',
+    fetch('https://mapevent-api.herokuapp.com/favorite_events',
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -306,9 +304,6 @@ addFavoritEvent = (e, eventObj) =>{
         <div id='user-container'>
           <UserContainer onChangeSelectHendler={this.onChangeSelectHendler} handleSubmit={this.handleSubmit} handleChange={this.handleChange} editEventNull={this.editEventNull} updateEventHendler={this.updateEventHendler} ref={this.createEventFormElement} createEventFormState={this.state.createEventFormState} addEventHendler={this.addEventHendler} popUpFavoriteHendler={this.popUpFavoriteHendler} favorits={this.state.favorits} userEvents={this.state.userEvents} currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser} categories={this.state.categories} setUserEvents={this.setUserEvents}/>
         </div>
-        {/* <div id='create-event-form'>
-          <CreateEventForm currentUser={this.state.currentUser} categories={this.state.categories}/>       
-                </div> */}
       </div>
     );
   }
