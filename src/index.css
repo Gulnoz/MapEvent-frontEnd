@@ -9,6 +9,8 @@ body {
 background-image: url("./pic/orig_131178nyc.jpg");
 background-size: cover;
 background-repeat: no-repeat;
+width: 100%;
+height: 100%;;
 }
 
 code {
