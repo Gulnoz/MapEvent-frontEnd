@@ -20,3 +20,125 @@
 .App-link {
   color: #09d3ac;
 }
+.map-div{
+  margin: 20px;
+  margin-right: 20px;
+  width: 60%;
+  height: 50%;
+}
+
+.pic{
+  width: 50px;
+   height: 50px;
+}
+.pic img{
+  width: 40px;
+   height: 30px;
+}
+.app-container{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+#user-container{
+    width: 40%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    
+}
+
+#user-container form {
+    border: 1px solid #466b75;
+    background: rgba(70, 107, 117,.5);
+    padding: 2rem 2rem;
+    /* width: 100%; */
+    text-align: center;
+    overflow: hidden;
+    border-radius: 5px;
+    align-content: space-between;
+}
+
+#user-container button:hover{
+    background: #466b75;
+    background: rgba(70, 107, 117,.9);
+    width: 139px;
+    height: 39px;
+    padding: 3px;
+ 
+}
+
+#user-container button{
+    background: #466b75;
+    text-align: center;
+    width: 140px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 5px;
+    font-size: calc(5px + 2vmin);
+    margin: 5px;
+    color: white;
+    
+}
+#user-container input{
+    /* width: 170px; */
+    height: 20px;
+    overflow: hidden;
+    border-radius: 5px;
+    padding: 8px;
+    margin-bottom: 3px;
+    /* padding-left: 6px;
+     margin-left: 10px; */
+}
+
+#user-container label{
+    
+    justify-content: right;
+  
+
+}
+#user-container select{
+   width: 170px;
+    height: 30px;
+    overflow: hidden;
+    border-radius: 5px;
+    padding-left: 6px;
+     margin: 2px;
+}
+@media all and (min-width: 480px) {
+  .Login {
+    padding: 60px 0;
+  }
+
+  .Login form {
+    margin: 0 auto;
+    max-width: 320px;
+  }
+}
+.favorit-content-div, .ui.form{
+  padding-top: 15px;
+  background:rgba(70, 107, 117,.5);
+  color: whitesmoke;
+  height: 440px;
+  width: 280px;
+  border: 1px solid #466b75;
+  overflow: auto;
+  border-radius: 10px;
+}
+.favorit-content-div li{
+ padding-top: 10px;
+}
+form.ui.form {
+  padding-bottom: 0 !important;
+}
+
+.ui.form  .field{
+  width: 80%;
+}
+.ui.form .field input{
+  width: 80%;
+}
