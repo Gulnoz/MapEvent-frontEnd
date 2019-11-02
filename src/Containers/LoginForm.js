@@ -20,7 +20,7 @@ handleChange = event => {
 
 handleSubmit = event => {
     event.preventDefault();
-    fetch('https://mapevent-api.herokuapp.com/users', 
+    fetch('https://mapevent-api.herokuapp.com/login', 
         { 
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
