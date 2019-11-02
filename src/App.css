@@ -50,6 +50,7 @@
     align-items: flex-start;
     justify-content: center;
     
+    
 }
 
 #user-container form {
@@ -69,9 +70,15 @@
     width: 139px;
     height: 39px;
     padding: 3px;
+    cursor: pointer;
  
 }
-
+#user-container li:hover{
+    cursor: pointer;
+}
+#user-container span:hover{
+    cursor: pointer;
+}
 #user-container button{
     background: #466b75;
     text-align: center;
