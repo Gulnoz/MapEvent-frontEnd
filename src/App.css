@@ -76,6 +76,9 @@
 #user-container li:hover{
     cursor: pointer;
 }
+#user-container li:active{
+    color: rgb(25, 62, 155);
+}
 #user-container span:hover{
     cursor: pointer;
 }
