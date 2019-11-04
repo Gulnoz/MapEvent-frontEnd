@@ -37,7 +37,7 @@ export default class Login extends React.Component {
                 else {
                      console.log(user)
                     //if(user.data)
-                    this.props.setCurrentUser(user.user.data)
+                    this.props.setCurrentUser(user.user)
                 }
                 })
     
