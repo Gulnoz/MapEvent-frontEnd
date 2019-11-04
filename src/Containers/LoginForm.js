@@ -32,8 +32,9 @@ handleSubmit = event => {
         .then(res => res.json())
         .then((user) => {
             //   return user ? this.props.logedIn() : null
-            if (user.error) {
-                // console.log(user)
+            console.log(user)
+            if (user.error === 'Not exist') {
+            
                 fetch('https://mapevent-api.herokuapp.com/users',
                     {
                         method: 'POST',
@@ -44,14 +45,14 @@ handleSubmit = event => {
                         })
                     })
                     .then(res => res.json())
-                    .then((user) => this.props.setCurrentUser(user.data))
-
+                    .then((user) => this.props.setCurrentUser(user.user.data))
+                    
 
             }
             else {
-                // console.log(user.data)
+                console.log(user)
 
-                this.props.setCurrentUser(user.data)
+                this.props.setCurrentUser(user.user.data)
             }
         })
 }
