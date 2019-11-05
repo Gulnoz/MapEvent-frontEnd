@@ -45,14 +45,14 @@ handleSubmit = event => {
                         })
                     })
                     .then(res => res.json())
-                    .then((user) => this.props.setCurrentUser(user.data))
+                    .then((user) => this.props.setCurrentUser(user.user.data))
                     
 
             }
             else {
                 console.log(user)
 
-                this.props.setCurrentUser(user.data)
+                this.props.setCurrentUser(user.user.data)
             }
         })
 }
