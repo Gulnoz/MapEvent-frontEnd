@@ -50,7 +50,7 @@ handleSubmit = event => {
 
             }
             else {
-                console.log(user)
+                console.log(user.user.data)
 
                 this.props.setCurrentUser(user.user.data)
             }
