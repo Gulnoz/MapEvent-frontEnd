@@ -74,7 +74,7 @@ export default class CreateEventForm extends React.Component {
                     </Form.Field>
                     {/* <Form.Field fluid control={Select} value={this.state.value} placeholder='Select Category' options={this.options} onChange={e => this.onChangeSelectHendler(e)} /> */}
                     {/* <Form.Select placeholder='Select your country' options={this.options} onChange={e=>this.onChangeSelectHendler(e)}/> */} 
-                    <div><select value={this.props.createEventFormState.value} onChange={this.props.onChangeSelectHendler}>
+                    <div style={{ margin: '0' }}><select value={this.props.createEventFormState.value} onChange={this.props.onChangeSelectHendler}>
                         <option value={null}> Select Category: </option>
                             {this.props.categories.map(category => {
                                 return <option value={category.id}> {category.name} </option>

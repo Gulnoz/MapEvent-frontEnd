@@ -18,7 +18,7 @@ render() {
         <form onSubmit={this.handleSubmit}>
             <label>
                 <h3 style={{color: "white"}}>Select event by category:
-                <select style={{marginLeft: '3px'}} value={this.state.value} onChange={this.handleChange}>
+                <select value={this.state.value} onChange={this.handleChange}>
                     <option selected disabled>-Select Category-</option>
                     <option value={null}>All</option>
                     {this.props.categories.map(category=>{

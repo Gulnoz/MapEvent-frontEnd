@@ -75,6 +75,7 @@
 }
 #user-container li:hover{
     cursor: pointer;
+    font-size: 17px;
 }
 #user-container li:active{
     color: rgb(25, 62, 155);
@@ -112,13 +113,19 @@
 
 }
 #user-container select{
-   width: 170px;
+    width: 67%;
     height: 30px;
     overflow: hidden;
     border-radius: 5px;
-    padding-left: 6px;
-     margin: 2px;
+    /* padding-left: 6px; */
+    /* margin: 2px; */
+     /* cursor: pointer; */
 }
+select:hover{
+  
+     cursor: pointer;
+}
+
 @media all and (min-width: 480px) {
   .Login {
     padding: 60px 0;
@@ -147,8 +154,8 @@ form.ui.form {
 }
 
 .ui.form  .field{
-  width: 80%;
+  /* width: 80%; */
 }
 .ui.form .field input{
-  width: 80%;
+  width: 60%;
 }
