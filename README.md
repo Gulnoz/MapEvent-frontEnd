@@ -1,5 +1,5 @@
 
-### Mapevent 
+# Mapevent 
 
 Web application to create and show existing social events on map.
 
@@ -50,13 +50,13 @@ Node.js and npm
 ## API Reference
 This web app uses the following APIs:
 
-# Google Maps API
+### Google Maps API
 Google Maps API keys you can get -> [here](https://developers.google.com/maps/documentation/javascript/get-api-key?utm_source=google&utm_medium=cpc&utm_campaign=FY18-Q2-global-demandgen-paidsearchonnetworkhouseads-cs-maps_contactsal_saf&utm_content=text-ad-none-none-DEV_c-CRE_284472093831-ADGP_Hybrid+%7C+AW+SEM+%7C+BKWS+~+Google+Maps+API+Key-KWID_43700035216023647-kwd-313687191537-userloc_9067609&utm_term=KW_%2Bgoogle%20%2Bmaps%20%2Bapi%20%2Bkey-ST_%2Bgoogle+%2Bmaps+%2Bapi+%2Bkey&gclid=Cj0KCQiAt_PuBRDcARIsAMNlBdrjR4HVVlcfqTS29UDi3VjdZ-4U0fDSmE-F44GXmDCd3G-Ad8VIzkkaAkhoEALw_wcB)
 
-# Google Geocoding API
+### Google Geocoding API
 Google Maps API keys you can get -> [here](https://developers.google.com/maps/documentation/geocoding/start?utm_source=google&utm_medium=cpc&utm_campaign=FY18-Q2-global-demandgen-paidsearchonnetworkhouseads-cs-maps_contactsal_saf&utm_content=text-ad-none-none-DEV_c-CRE_315916118282-ADGP_Hybrid+%7C+AW+SEM+%7C+SKWS+~+Geocoding+API-KWID_43700039136946654-kwd-301485308042-userloc_9067609&utm_term=KW_%2Bgeocoding%20%2Bapi-ST_%2Bgeocoding+%2Bapi&gclid=Cj0KCQiAt_PuBRDcARIsAMNlBdq7KscrTk0gzMuF39ZPF2QA7w6Hc5DwLzMaMbn--aHsAAzvjoW25hcaApOnEALw_wcB)
 
-# Google Oauth API client_id you can get -> [here](https://developers.google.com/identity/sign-in/web/sign-in#before_you_begin) 
+### Google Oauth API client_id you can get -> [here](https://developers.google.com/identity/sign-in/web/sign-in#before_you_begin) 
 
 
 ## Installing
