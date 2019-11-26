@@ -1,68 +1,75 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Mapevent 
 
-In the project directory, you can run:
+Web application to create and show existing social events on map.
 
-### `npm start`
+A full stack React.js and Ruby on Rails web application was built to them who don't want miss important social events. 
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Chack Mapevent app on [heroku link] (http://mapevent.herokuapp.com/)
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Provides just one step to see events on the map. Events can be filtered by category as needed. Each event has different icons on map depend on category wich makes easier to find events by enterests. Have been used Google Oath API to login or create new user. User simply can create, edit his own events. User can save other people events as favorite. 
 
-### `npm run build`
+## Built with
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Backend
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Ruby [2.6.1]
+Rails [~> 5.2.3] - MVC web framework used as an API
+PostgreSQL [>= 0.18, < 2.0] - Database
+bcrypt [~> 3.1.7] - Gem for encryption and securing user passwords
+Figaro - Rails gem for securing API Keys
+Active Model Serializers - Serializing API routes to JSON
+JWT - securing tokens
+Heroku - App deployment
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## FrontEnd
 
-### `npm run eject`
+React.js
+React Router - Declarative Routing
+Google Maps API
+Google Geocoding API
+Google Oauth API
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Styling:
+CSS
+Semantic framework
+Bootstrap framework
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Prerequisites
+Before you begin, ensure you have installed the latest version of:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Ruby
+Rails
+PostgreSQL
+Node.js and npm
 
-## Learn More
+## API Reference
+This web app uses the following APIs:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Google Maps API
+Google Maps API keys you can get -> [here](https://developers.google.com/maps/documentation/javascript/get-api-key?utm_source=google&utm_medium=cpc&utm_campaign=FY18-Q2-global-demandgen-paidsearchonnetworkhouseads-cs-maps_contactsal_saf&utm_content=text-ad-none-none-DEV_c-CRE_284472093831-ADGP_Hybrid+%7C+AW+SEM+%7C+BKWS+~+Google+Maps+API+Key-KWID_43700035216023647-kwd-313687191537-userloc_9067609&utm_term=KW_%2Bgoogle%20%2Bmaps%20%2Bapi%20%2Bkey-ST_%2Bgoogle+%2Bmaps+%2Bapi+%2Bkey&gclid=Cj0KCQiAt_PuBRDcARIsAMNlBdrjR4HVVlcfqTS29UDi3VjdZ-4U0fDSmE-F44GXmDCd3G-Ad8VIzkkaAkhoEALw_wcB)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Google Geocoding API
+Google Maps API keys you can get -> [here](https://developers.google.com/maps/documentation/geocoding/start?utm_source=google&utm_medium=cpc&utm_campaign=FY18-Q2-global-demandgen-paidsearchonnetworkhouseads-cs-maps_contactsal_saf&utm_content=text-ad-none-none-DEV_c-CRE_315916118282-ADGP_Hybrid+%7C+AW+SEM+%7C+SKWS+~+Geocoding+API-KWID_43700039136946654-kwd-301485308042-userloc_9067609&utm_term=KW_%2Bgeocoding%20%2Bapi-ST_%2Bgeocoding+%2Bapi&gclid=Cj0KCQiAt_PuBRDcARIsAMNlBdq7KscrTk0gzMuF39ZPF2QA7w6Hc5DwLzMaMbn--aHsAAzvjoW25hcaApOnEALw_wcB)
 
-### Code Splitting
+# Google Oauth API client_id you can get -> [here](https://developers.google.com/identity/sign-in/web/sign-in#before_you_begin) 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-### Analyzing the Bundle Size
+## Installing
+Backend Installation, please click [here](https://github.com/Gulnoz/EventsOnMapBackend)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Frontend Installation:
 
-### Making a Progressive Web App
+Clone this repo to your local machine git clone <this-repo-url>
+cd to frontend directory
+Ensure your Backend API is running at http://localhost:3000/
+run npm install to install all dependencies
+run npm start to start server
+When prompted, ensure Frontend is running at http://localhost:3001
+  
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
 
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
