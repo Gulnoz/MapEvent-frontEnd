@@ -13,8 +13,7 @@ export default class UserContainer extends React.Component {
   }
   createEventHendler=()=>{
    this.setState({
-     showCreateForm: !this.state.showCreateForm,
-
+     showCreateForm: !this.state.showCreateForm
  })
     this.props.editEventNull()
  //call function from parent to make null eventToEdit
@@ -26,8 +25,13 @@ export default class UserContainer extends React.Component {
 
     // this.createEventHendler()
   }
+  closeWindow=()=>{
+    this.setState({
+      showCreateForm: false
+    })
+  }
     render() {
-      const { ref} = this.props;
+      const {ref} = this.props;
       console.log(this.props.createEventFormState.eventIt)
         return (
 
@@ -47,7 +51,7 @@ export default class UserContainer extends React.Component {
               
                 this.state.showCreateForm || this.props.createEventFormState.eventId
                 ?
-                  <CreateEventForm onChangeSelectHendler={this.props.onChangeSelectHendler} handleSubmit={this.props.handleSubmit} handleChange={this.props.handleChange}updateEventHendler={this.props.updateEventHendler} ref={ref} createEventFormState={this.props.createEventFormState} createEventHendler={this.createEventHendler} addEventHendler={this.props.addEventHendler}currentUser={this.props.currentUser} categories={this.props.categories}/>
+                  <CreateEventForm onChangeSelectHendler={this.props.onChangeSelectHendler} handleSubmit={this.props.handleSubmit} handleChange={this.props.handleChange} updateEventHendler={this.props.updateEventHendler} ref={ref} createEventFormState={this.props.createEventFormState} createEventHendler={this.createEventHendler} closeWindow = {this.closeWindow} addEventHendler={this.props.addEventHendler}currentUser={this.props.currentUser} categories={this.props.categories}/>
                   : 
                   this.state.showFaforite
                   ?
