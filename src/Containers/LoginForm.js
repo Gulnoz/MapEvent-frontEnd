@@ -33,6 +33,7 @@ handleSubmit = event => {
         .then((user) => {
             //   return user ? this.props.logedIn() : null
             console.log(user)
+            
             if (user.error === 'Not exist') {
             
                 fetch('https://mapevent-api.herokuapp.com/users',
@@ -49,10 +50,17 @@ handleSubmit = event => {
                     
 
             }
-            else {
-                console.log(user.user.data)
-
+            else if (user.error === 'wrong password'){
+                console.log(user.error)
+            }
+            else if (user.user) {
+                console.log(user)
                 this.props.setCurrentUser(user.user.data)
+            }
+            else {
+               console.log(user)
+                
+                
             }
         })
 }
