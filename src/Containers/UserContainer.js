@@ -13,7 +13,9 @@ export default class UserContainer extends React.Component {
   }
   createEventHendler=()=>{
    this.setState({
-     showCreateForm: !this.state.showCreateForm
+     //showCreateForm: !this.state.showCreateForm
+     showCreateForm: true,
+     
  })
     this.props.editEventNull()
  //call function from parent to make null eventToEdit
@@ -37,10 +39,13 @@ export default class UserContainer extends React.Component {
 
           <>
           {
-            this.props.currentUser
+              this.props.currentUser && !this.state.showCreateForm
                    ?
-                <div> <button type='submit' onClick={this.swichWindow}>{this.state.showFaforite ? 'My Events' : 'Favorite' }</button><button type='submit' onClick={this.createEventHendler}>Create Event</button> </div>
-                  
+                <div> <button type='submit' onClick={this.swichWindow}>{this.state.showFaforite ? 'My Events' : 'Favorite' }</button>
+                {!this.state.showCreateForm
+                ?
+                <button type='submit' onClick={this.createEventHendler}>Create Event</button> 
+                    : null}</div>
                   : null}
             {
              this.props.currentUser

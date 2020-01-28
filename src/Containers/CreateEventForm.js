@@ -83,14 +83,12 @@ export default class CreateEventForm extends React.Component {
                             })}
                            </select>
                            </div>
-                    <div style={{display:'flex',
-                        flexDirection: 'row'}}><Button type='submit' onClick={this.props.closeWindow}>Cancel</Button><Button type='submit'>Submit</Button></div>
-                    
-                    
-                </Form>
+                    <div style={{display:'flex', flexDirection: 'row'}}>
+                        <Button type='submit' onClick={this.props.closeWindow}>Cancel</Button>
+                        <Button type='submit'>Submit</Button></div>
+                     </Form>
                 
-                    
-                        {/* <Button type='submit' onClick={this.props.createEventHendler}>My Events</Button> */}
+                     {/* <Button type='submit' onClick={this.props.createEventHendler}>My Events</Button> */}
                        
                 
             </Segment>
