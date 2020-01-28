@@ -83,8 +83,9 @@ export default class CreateEventForm extends React.Component {
                             })}
                            </select>
                            </div>
-                    <Button type='submit' onClick={this.props.closeWindow}>Cancel</Button>
-                    <Button type='submit'>Submit</Button>
+                    <div style={{display:'flex',
+                        flexDirection: 'row'}}><Button type='submit' onClick={this.props.closeWindow}>Cancel</Button><Button type='submit'>Submit</Button></div>
+                    
                     
                 </Form>
                 
