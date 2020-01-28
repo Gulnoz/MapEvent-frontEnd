@@ -18,8 +18,10 @@ export default class CreateEventForm extends React.Component {
 //             [event.target.name]: event.target.value
 //         });
 //     }
-
-
+    closeWinwdowHendler=()=>{
+        this.props.closeWindow()
+    }
+    
     options = this.props.categories.map(category => {
         return {
             key: category['id'], text: category['name'], value: category['id']
@@ -81,13 +83,12 @@ export default class CreateEventForm extends React.Component {
                             })}
                            </select>
                            </div>
-
-                    <Button type='submit'>Submit</Button>
-
-                </Form>
+                    <div style={{display:'flex', flexDirection: 'row'}}>
+                        <Button type='submit' onClick={this.props.closeWindow}>Cancel</Button>
+                        <Button type='submit'>Submit</Button></div>
+                     </Form>
                 
-                    
-                        {/* <Button type='submit' onClick={this.props.createEventHendler}>My Events</Button> */}
+                     {/* <Button type='submit' onClick={this.props.createEventHendler}>My Events</Button> */}
                        
                 
             </Segment>

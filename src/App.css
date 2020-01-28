@@ -121,6 +121,10 @@
     /* margin: 2px; */
      /* cursor: pointer; */
 }
+#user-container #row-align{
+display: flex;
+  flex-direction: row;
+}
 select:hover{
   
      cursor: pointer;
