@@ -55,7 +55,7 @@ handleSubmit = event => {
                     .then((user) => {
                         
                         this.props.setCurrentUser(user.user.data);
-                        localStorage.setItem('currentUser',user.user);
+                        localStorage.setItem('currentUserToken', user.jwt);
                     })
                     
 
