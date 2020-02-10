@@ -29,11 +29,11 @@
 
 .pic{
   width: 50px;
-   height: 50px;
+  height: 50px;
 }
 .pic img{
   width: 40px;
-   height: 30px;
+  height: 30px;
 }
 .app-container{
   width: 100%;
@@ -49,8 +49,6 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    
-    
 }
 
 #user-container form {
@@ -71,11 +69,11 @@
     height: 39px; */
     /* padding: 3px; */
     cursor: pointer;
- 
 }
 #user-container li:hover{
     cursor: pointer;
-    font-size: 17px;
+    /* font-size: 17px; */
+    color: navy;
 }
 #user-container li:active{
     color: rgb(25, 62, 155);
@@ -94,7 +92,6 @@
     font-size: calc(5px + 2vmin);
     margin: 5px;
     color: white;
-    
 }
 #user-container #logout-bttn{
   position: absolute;
@@ -104,8 +101,6 @@
   height: 30px;
   font-size: calc(3px + 1.5vmin);
   margin: 2px;
-  
-
 }
 #user-container input{
     /* width: 170px; */
@@ -119,10 +114,7 @@
 }
 
 #user-container label{
-    
-    justify-content: right;
-  
-
+  justify-content: right;
 }
 #user-container select{
     width: 67%;
@@ -138,8 +130,7 @@ display: flex;
   flex-direction: row;
 }
 select:hover{
-  
-     cursor: pointer;
+  cursor: pointer;
 }
 
 @media all and (min-width: 480px) {
@@ -163,15 +154,12 @@ select:hover{
   border-radius: 10px;
 }
 .favorit-content-div li{
- padding-top: 10px;
+  padding-top: 10px;
 }
 form.ui.form {
   padding-bottom: 0 !important;
 }
 
-.ui.form  .field{
-  /* width: 80%; */
-}
 .ui.form .field input{
   width: 60%;
 }
