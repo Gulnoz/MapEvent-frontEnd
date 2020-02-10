@@ -30,14 +30,18 @@ export default class Login extends React.Component {
                             })
                         })
                         .then(res => res.json())
-                        .then((user) => this.props.setCurrentUser(user.user.data))
+                        .then((user) => {
+                            this.props.setCurrentUser(user.user.data);
+                            localStorage.setItem('currentUserToken', user.jwt);
+                        })
 
 
                 }
                 else {
                      console.log(user)
                     //if(user.data)
-                    this.props.setCurrentUser(user.user.data)
+                    this.props.setCurrentUser(user.user.data);
+                    localStorage.setItem('currentUserToken', user.jwt);
                 }
                 })
     
