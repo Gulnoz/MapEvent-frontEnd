@@ -66,7 +66,9 @@ export default class UserContainer extends React.Component {
                   
               
             
-              :<LoginForm setCurrentUser={this.props.setCurrentUser}/>
+                : (localStorage.getItem('currentUserToken')
+                ? null
+                : <LoginForm setCurrentUser={this.props.setCurrentUser}/>)
           }
           
           </>
