@@ -67,9 +67,9 @@
 #user-container button:hover{
     background: #466b75;
     background: rgba(70, 107, 117,.9);
-    width: 139px;
-    height: 39px;
-    padding: 3px;
+    /* width: 139px;
+    height: 39px; */
+    /* padding: 3px; */
     cursor: pointer;
  
 }
@@ -83,6 +83,7 @@
 #user-container span:hover{
     cursor: pointer;
 }
+
 #user-container button{
     background: #466b75;
     text-align: center;
@@ -94,6 +95,17 @@
     margin: 5px;
     color: white;
     
+}
+#user-container #logout-bttn{
+  position: absolute;
+  right: 1px;
+  top: 1px;
+  width: 65px;
+  height: 30px;
+  font-size: calc(3px + 1.5vmin);
+  margin: 2px;
+  
+
 }
 #user-container input{
     /* width: 170px; */

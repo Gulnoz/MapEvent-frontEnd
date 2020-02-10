@@ -30,6 +30,26 @@ class App extends React.Component{
 
   }
   
+  auth=()=>{
+    //console.log('test')
+    if (localStorage.getItem('currentUserToken')) {
+      //console.log(localStorage.getItem('currentUserToken'))
+      
+      fetch('https://mapevent-api.herokuapp.com/auth', {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('currentUserToken')}`
+        }
+      }).then(res => res.json())
+        .then(user=>{this.setCurrentUser(user.user.data)})
+        .catch(console.log)
+      //return { Authorization: `Bearer ${currentUser.token}` };
+    } else {
+      // return <UserContainer onChangeSelectHendler={this.onChangeSelectHendler} handleSubmit={this.handleSubmit} handleChange={this.handleChange} editEventNull={this.editEventNull} updateEventHendler={this.updateEventHendler} ref={this.createEventFormElement} createEventFormState={this.state.createEventFormState} addEventHendler={this.addEventHendler} popUpFavoriteHendler={this.popUpFavoriteHendler} favorits={this.state.favorits} userEvents={this.state.userEvents} currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser} categories={this.state.categories} setUserEvents={this.setUserEvents} />
+
+    }
+  }
+
   onChangeSelectHendler = (event) => {
    console.log("Select value")
     console.log(event.target.value)
@@ -157,7 +177,11 @@ this.setState({
       })
     }
   }
+  componentWillMount(){
+    this.auth()
+  }
   componentDidMount(){
+   
     fetch('https://mapevent-api.herokuapp.com/categories')
     .then(res=>res.json())
     .then(res=>this.setState({categories: res}))
@@ -165,6 +189,7 @@ this.setState({
     fetch('https://mapevent-api.herokuapp.com/events')
     .then(res => res.json())
     .then(res => this.setState({ events: res, filteredEvent:res}))
+  
   }
 addEventHendler=(eventObj)=>{
   this.setState({
@@ -232,7 +257,7 @@ selectByCategory=(id)=>{
     this.setState({ filteredEvent: this.state.events })
   }
   else{
-    fetch(`https://mapevent-api.herokuapp.com/events/categories/${id}`)
+     fetch(`https://mapevent-api.herokuapp.com/events/categories/${id}`)
   .then(res => res.json())
   .then(res => this.setState({ filteredEvent: res }))
   }
@@ -245,6 +270,13 @@ setCurrentUser=(user)=>{
    
   })
   this.setFavorits()
+}
+logOutHendler=()=>{
+  this.setState({
+    currentUser: null
+
+  })
+  localStorage.clear()
 }
   isUserEvent = (event) => {
    return this.state.userEvents.find(el=> el.id===event.id)
@@ -301,9 +333,14 @@ addFavoritEvent = (e, eventObj) =>{
           <MapContainer createEventFormState={this.state.createEventFormState}editEvent={this.editEvent}isUserEvent={this.isUserEvent}currentUser={this.state.currentUser} addFavoritEvent={this.addFavoritEvent} events={this.state.filteredEvent}/>
           
         </div>
+        
         <div id='user-container'>
-          <UserContainer onChangeSelectHendler={this.onChangeSelectHendler} handleSubmit={this.handleSubmit} handleChange={this.handleChange} editEventNull={this.editEventNull} updateEventHendler={this.updateEventHendler} ref={this.createEventFormElement} createEventFormState={this.state.createEventFormState} addEventHendler={this.addEventHendler} popUpFavoriteHendler={this.popUpFavoriteHendler} favorits={this.state.favorits} userEvents={this.state.userEvents} currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser} categories={this.state.categories} setUserEvents={this.setUserEvents}/>
-        </div>
+          
+          <div ><button id='logout-bttn' type='submit' onClick={this.logOutHendler}>LOGOUT</button> </div>
+          <UserContainer onChangeSelectHendler={this.onChangeSelectHendler} handleSubmit={this.handleSubmit} handleChange={this.handleChange} editEventNull={this.editEventNull} updateEventHendler={this.updateEventHendler} ref={this.createEventFormElement} createEventFormState={this.state.createEventFormState} addEventHendler={this.addEventHendler} popUpFavoriteHendler={this.popUpFavoriteHendler} favorits={this.state.favorits} userEvents={this.state.userEvents} currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser} categories={this.state.categories} setUserEvents={this.setUserEvents} />
+          
+          
+          </div>
       </div>
     );
   }

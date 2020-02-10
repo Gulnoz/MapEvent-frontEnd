@@ -52,7 +52,11 @@ handleSubmit = event => {
                         })
                     })
                     .then(res => res.json())
-                    .then((user) => this.props.setCurrentUser(user.user.data))
+                    .then((user) => {
+                        
+                        this.props.setCurrentUser(user.user.data);
+                        localStorage.setItem('currentUser',user.user);
+                    })
                     
 
             }
@@ -63,6 +67,8 @@ handleSubmit = event => {
             else if (user.user) {
                 console.log(user)
                 this.props.setCurrentUser(user.user.data)
+
+                localStorage.setItem('currentUserToken', user.jwt);
             }
             else {
                console.log(user)
