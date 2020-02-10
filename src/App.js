@@ -13,16 +13,14 @@ class App extends React.Component{
     popUpFavorite: null,
     userEvents: [],
     createEventFormState: {
-     eventId: null,
-      name: "",
+    eventId: null,
+    name: "",
     image: "",
     description: "",
     address: "",
-
     date: "",
     start: "",
     end: "",
-
     value: null,
     locationLat: null,
     locationLong: null
@@ -68,12 +66,8 @@ class App extends React.Component{
   handleSubmit = event => {
     event.preventDefault();
     if (this.state.createEventFormState.address!==''){
-     
-       this.getLatLong(this.state.createEventFormState.address)
-
+        this.getLatLong(this.state.createEventFormState.address)
     }
-   
-
   }
   getLatLong = (address) => {
     //let location=null
@@ -144,16 +138,13 @@ class App extends React.Component{
       })
   }
 filterFavoritEvents=()=>{
-   // console.log()
   let newArr=[]
   if (this.state.currentUser){
     console.log(this.state.setCurrentUser)
     this.state.currentUser.attributes.favorite_events.forEach((favorite)=> {
       this.state.events.forEach((event) => favorite.event_id === event.id ? newArr.push(event) : console.log(event));}) 
     return newArr
-
   }
-  
 }
 popUpFavoriteHendler=(favoritObj)=>{
 this.setState({
@@ -161,14 +152,12 @@ this.setState({
 })
 }
   setFavorits=()=>{
-   
-   if(this.state.currentUser){
-     this.setState({
-       favorits: this.filterFavoritEvents(),
-       userEvents: this.state.currentUser.attributes.events
-     })
-   }
-   
+    if(this.state.currentUser){
+      this.setState({
+        favorits: this.filterFavoritEvents(),
+        userEvents: this.state.currentUser.attributes.events
+      })
+    }
   }
   setUserEvents=()=>{
     if (this.state.currentUser) {
@@ -195,7 +184,6 @@ addEventHendler=(eventObj)=>{
   this.setState({
     events: [...this.state.events, eventObj],
     filteredEvent: [...this.state.filteredEvent, eventObj],
-    //favorits: [...this.state.favorits, eventObj],
     userEvents: [...this.state.userEvents, eventObj]
   })
 }
@@ -219,35 +207,30 @@ editEvent=(event)=>{
       ...this.state.createEventFormState,
       eventId: event.id,
       name: event.name,
-        image: event.image,
-        description: event.description,
-        address: event.address,
-
-        date: event.date,
-        start: event.start_time,
-        end: event.end_time,
-
-        value: event.category_id,
+      image: event.image,
+      description: event.description,
+      address: event.address,
+      date: event.date,
+      start: event.start_time,
+      end: event.end_time,
+      value: event.category_id,
     }
   })
-  // this.updateFormHendler()
 }
 editEventNull=()=>{
   this.setState({
     createEventFormState: {
-      eventId: null,
-      name: "",
-      image: "",
-      description: "",
-      address: "",
-
-      date: "",
-      start: "",
-      end: "",
-
-      value: null,
-      locationLat: null,
-      locationLong: null
+    eventId: null,
+    name: "",
+    image: "",
+    description: "",
+    address: "",
+    date: "",
+    start: "",
+    end: "",
+    value: null,
+    locationLat: null,
+    locationLong: null
     }
   })
 }
@@ -257,9 +240,9 @@ selectByCategory=(id)=>{
     this.setState({ filteredEvent: this.state.events })
   }
   else{
-     fetch(`https://mapevent-api.herokuapp.com/events/categories/${id}`)
-  .then(res => res.json())
-  .then(res => this.setState({ filteredEvent: res }))
+    fetch(`https://mapevent-api.herokuapp.com/events/categories/${id}`)
+    .then(res => res.json())
+    .then(res => this.setState({ filteredEvent: res }))
   }
 }
 
@@ -267,26 +250,23 @@ setCurrentUser=(user)=>{
  console.log(user)
   this.setState({
     currentUser: user
-   
   })
   this.setFavorits()
 }
 logOutHendler=()=>{
   this.setState({
     currentUser: null
-
   })
   localStorage.clear()
 }
   isUserEvent = (event) => {
-   return this.state.userEvents.find(el=> el.id===event.id)
+  return this.state.userEvents.find(el=> el.id===event.id)
   }
 addFavoritEvent = (e, eventObj) =>{
-   //console.log('hit add favorite event')
   e.preventDefault();
   let exist=this.state.favorits.find(favorit=>favorit.id===eventObj.id)
   if (exist){
- let newArr=this.state.favorits.filter(favorit=>favorit.id!==exist.id)
+  let newArr=this.state.favorits.filter(favorit=>favorit.id!==exist.id)
     this.setState({
       favorits: newArr,
       filteredEvent: this.state.events
@@ -312,9 +292,9 @@ addFavoritEvent = (e, eventObj) =>{
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          user_id : this.state.currentUser.id,
-          event_id: eventObj.id
-          })
+        user_id : this.state.currentUser.id,
+        event_id: eventObj.id
+        })
       })
     .then(res => res.json())
     .then()
@@ -327,20 +307,43 @@ addFavoritEvent = (e, eventObj) =>{
       <div className='app-container'> 
         <div className='map-div'>
           <div>
-            <SelectCategory categories={this.state.categories} submitHendler={this.selectByCategory} />
+            <SelectCategory 
+            categories={this.state.categories}
+            submitHendler={this.selectByCategory}/>
           </div> 
 
-          <MapContainer createEventFormState={this.state.createEventFormState}editEvent={this.editEvent}isUserEvent={this.isUserEvent}currentUser={this.state.currentUser} addFavoritEvent={this.addFavoritEvent} events={this.state.filteredEvent}/>
+          <MapContainer 
+          createEventFormState={this.state.createEventFormState}
+          editEvent={this.editEvent}
+          isUserEvent={this.isUserEvent}
+          currentUser={this.state.currentUser} 
+          addFavoritEvent={this.addFavoritEvent} 
+          events={this.state.filteredEvent}/>
           
         </div>
         
         <div id='user-container'>
           
-          <div ><button id='logout-bttn' type='submit' onClick={this.logOutHendler}>LOGOUT</button> </div>
-          <UserContainer onChangeSelectHendler={this.onChangeSelectHendler} handleSubmit={this.handleSubmit} handleChange={this.handleChange} editEventNull={this.editEventNull} updateEventHendler={this.updateEventHendler} ref={this.createEventFormElement} createEventFormState={this.state.createEventFormState} addEventHendler={this.addEventHendler} popUpFavoriteHendler={this.popUpFavoriteHendler} favorits={this.state.favorits} userEvents={this.state.userEvents} currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser} categories={this.state.categories} setUserEvents={this.setUserEvents} />
+          <div>
+            <button id='logout-bttn' type='submit' onClick={this.logOutHendler}>LOGOUT</button> </div>
           
-          
-          </div>
+          <UserContainer 
+          onChangeSelectHendler={this.onChangeSelectHendler}
+          handleSubmit={this.handleSubmit} 
+          handleChange={this.handleChange} 
+          editEventNull={this.editEventNull} 
+          updateEventHendler={this.updateEventHendler} 
+          ref={this.createEventFormElement} 
+          createEventFormState={this.state.createEventFormState} 
+          addEventHendler={this.addEventHendler} 
+          popUpFavoriteHendler={this.popUpFavoriteHendler} 
+          favorits={this.state.favorits} 
+          userEvents={this.state.userEvents} 
+          currentUser={this.state.currentUser} 
+          setCurrentUser={this.setCurrentUser} 
+          categories={this.state.categories} 
+          setUserEvents={this.setUserEvents} />
+        </div>
       </div>
     );
   }
