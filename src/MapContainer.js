@@ -15,7 +15,7 @@ import infoWindowBackround from './pic/89733.jpg'
 import ReactDOM from 'react-dom';
 import { Map, GoogleApiWrapper, Marker, InfoWindow, Point, } from 'google-maps-react';
 
-class MapContainer extends React.Component{
+class MapContainer extends React.PureComponent{
 
     state = {
         showingInfoWindow: false,  //Hides or the shows the infoWindow
