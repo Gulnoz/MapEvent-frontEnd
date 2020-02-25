@@ -313,7 +313,7 @@ addFavoritEvent = (e, eventObj) =>{
           </div> 
 
           <MapContainer 
-          createEventFormState={this.state.createEventFormState}
+          //createEventFormState={this.state.createEventFormState}
           editEvent={this.editEvent}
           isUserEvent={this.isUserEvent}
           currentUser={this.state.currentUser} 
