@@ -13,19 +13,14 @@ export default class UserContainer extends React.Component {
   }
   createEventHendler=()=>{
    this.setState({
-     //showCreateForm: !this.state.showCreateForm
      showCreateForm: true,
-     
- })
+   })
     this.props.editEventNull()
- //call function from parent to make null eventToEdit
   }
   swichWindow=()=>{
     this.setState({
       showFaforite: !this.state.showFaforite
     })
-
-    // this.createEventHendler()
   }
   closeWindow=()=>{
     this.setState({
@@ -33,46 +28,53 @@ export default class UserContainer extends React.Component {
     })
   }
     render() {
+      
       const {ref} = this.props;
-      console.log(this.props.createEventFormState.eventIt)
+      
         return (
-
           <>
           {
-              this.props.currentUser && !this.state.showCreateForm
-                   ?
-                <div> <button type='submit' onClick={this.swichWindow}>{this.state.showFaforite ? 'My Events' : 'Favorite' }</button>
+              this.props.currentUser && !this.state.showCreateForm ? 
+              <div> <button type='submit' onClick={this.swichWindow}>{this.state.showFaforite ? 'My Events' : 'Favorite' }</button>
                 {!this.state.showCreateForm
                 ?
                 <button type='submit' onClick={this.createEventHendler}>Create Event</button> 
-                    : null}</div>
+                    : null} </div>
                   : null}
             {
              this.props.currentUser
               ? 
-                // console.log(this.props.currentUser.attributes)
-              
-               
-              
-                this.state.showCreateForm || this.props.createEventFormState.eventId
+                (this.state.showCreateForm || this.props.createEventFormState.eventId
                 ?
-                  <CreateEventForm onChangeSelectHendler={this.props.onChangeSelectHendler} handleSubmit={this.props.handleSubmit} handleChange={this.props.handleChange} updateEventHendler={this.props.updateEventHendler} ref={ref} createEventFormState={this.props.createEventFormState} createEventHendler={this.createEventHendler} closeWindow = {this.closeWindow} addEventHendler={this.props.addEventHendler}currentUser={this.props.currentUser} categories={this.props.categories}/>
+                  <CreateEventForm 
+                    onChangeSelectHendler={this.props.onChangeSelectHendler} 
+                    handleSubmit={this.props.handleSubmit} 
+                    handleChange={this.props.handleChange}
+                    updateEventHendler={this.props.updateEventHendler} 
+                    ref={ref} 
+                    createEventFormState={this.props.createEventFormState}
+                    createEventHendler={this.createEventHendler}
+                    closeWindow={this.closeWindow} 
+                    addEventHendler={this.props.addEventHendler}
+                    currentUser={this.props.currentUser}
+                    categories={this.props.categories}/>
                   : 
-                  this.state.showFaforite
+                  this.state.showFaforite)
                   ?
-                    <FavoritEventList caption="Faforite:" createEventHendler={this.createEventHendler} popUpFavoriteHendler={this.props.popUpFavoriteHendler} favorits={this.props.favorits} />
+                    <FavoritEventList 
+                      caption="Faforite:" 
+                      createEventHendler={this.createEventHendler} 
+                      popUpFavoriteHendler={this.props.popUpFavoriteHendler} 
+                      favorits={this.props.favorits} />
                   :
-                  <FavoritEventList caption="My Events:" createEventHendler={this.createEventHendler}  popUpFavoriteHendler={this.props.popUpFavoriteHendler} favorits={this.props.userEvents} />
-                  
-              
-            
-                : (localStorage.getItem('currentUserToken')
-                ? null
-                : <LoginForm setCurrentUser={this.props.setCurrentUser}/>)
+                  <FavoritEventList 
+                    caption="My Events:" 
+                    createEventHendler={this.createEventHendler} 
+                    popUpFavoriteHendler={this.props.popUpFavoriteHendler} 
+                    favorits={this.props.userEvents} />
+                  : (localStorage.getItem('currentUserToken')
+                ? null : <LoginForm setCurrentUser={this.props.setCurrentUser}/>)
           }
-          
           </>
-          
-        )}
-
-    }
+          )}
+}
