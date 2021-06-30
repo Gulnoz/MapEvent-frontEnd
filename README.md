@@ -5,6 +5,7 @@ Web application to create and show existing social events on map.
 
 A full stack React.js and Ruby on Rails web application was built to them who don't want miss important social events. 
 
+![image](https://user-images.githubusercontent.com/33871558/123909583-3e88f300-d947-11eb-8ff6-9ab64d6a1922.png)
 
 Chack Mapevent app on [heroku link](http://mapevent.herokuapp.com/)
 
