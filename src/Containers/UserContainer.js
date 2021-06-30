@@ -44,7 +44,7 @@ export default class UserContainer extends React.Component {
             {
              this.props.currentUser
               ? 
-                (this.state.showCreateForm || this.props.createEventFormState.eventId
+                this.state.showCreateForm || this.props.createEventFormState.eventId
                 ?
                   <CreateEventForm 
                     onChangeSelectHendler={this.props.onChangeSelectHendler} 
@@ -59,7 +59,7 @@ export default class UserContainer extends React.Component {
                     currentUser={this.props.currentUser}
                     categories={this.props.categories}/>
                   : 
-                  this.state.showFaforite)
+                  this.state.showFaforite
                   ?
                     <FavoritEventList 
                       caption="Faforite:" 
